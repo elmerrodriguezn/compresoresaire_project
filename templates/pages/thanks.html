@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Gracias por contáctarnos {% endblock %}
+{% block content %}
+<div class="container container-custom">
+    <div class="card card-custom">
+        <div class="card-body">
+            <div class="row justify-content-between">
+
+                <div class="col-md-6">
+                    <h1 class="display-4">Gracias por contactarnos <i class="fas fa-thumbs-up fa-lg"></i></h1>
+                    <div class="social">
+                        <a href="https://www.facebook.com/lymmexico" target="blank">
+                            <i class="fab fa-facebook fa-2x"></i>
+                        </a>
+                        <a href="https://mx.linkedin.com/company/lymdemexico" target="blank">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                        <a href="https://wa.me/5216622990622" target="blank">
+                            <i class="fab fa-whatsapp fa-2x"></i>
+                        </a>
+                    </div>
+                    <p class="mt-4 mb-4">Nuestro calificado equipo de ingenieros encontrará la mejor solución a tus
+                        problemas de
+                        transferencia
+                        de calor.</p>
+                    <a class="btn btn-primary-custom btn-lg" href="{% url 'index' %}">Regresar</a>
+                </div>
+                <div class="col-md-4">
+                    <iframe
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Flymmexico&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                        width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allowTransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

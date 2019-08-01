@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} | {{ detail.name }} {% endblock %}
+{% load static %}
+{% block content %}
+<div class="container container-custom">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="http://www.lymservicios.mx/web/image?model=product.template&id={{ detail.id }}&field=image"
+                        class="img-fuid" alt="detail.name" width="500">
+                </div>
+                <div class="col-md-6">
+                    <p>{{ detail.description }}</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ detail.name }}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Número de parte: {{ detail.default_code }}</li>
+                            <li class="list-group-item">{{ detail.description_sale|linebreaksbr }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
