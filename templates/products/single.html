@@ -7,16 +7,17 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="http://www.lymservicios.mx/web/image?model=product.template&id={{ detail.id }}&field=image"
-                        class="img-fuid" alt="detail.name" width="500">
+                    <img src="https://lymservicios.odoo.com/web/image?model=product.template&id={{ detail.id }}&field=image"
+                        class="img-fuid" alt="detail.name">
                 </div>
                 <div class="col-md-6">
-                    <p>{{ detail.description }}</p>
+                    <h3 class="title">{{ detail.name }}</h3>
+                    <p class="description">{{ detail.description }}</p>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            {{ detail.name }}
+                            <p class="lead">Especificaciones</p>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Número de parte: {{ detail.default_code }}</li>

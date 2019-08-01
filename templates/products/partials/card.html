@@ -1,0 +1,9 @@
+<div class="card card-custom">
+    <img src="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
+        class="card-img-top zoom" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description_sale }}</p>
+        <a href="{% url 'single' product.id %}" class="btn btn-block btn-primary">Solicitar Cotización</a>
+    </div>
+</div>
