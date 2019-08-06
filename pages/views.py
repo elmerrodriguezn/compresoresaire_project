@@ -13,7 +13,7 @@ def index(request):
     data = query.get(
         'product.template',
         'search_read',
-        [['type', '=', 'product'],['categ_id.parent_id', '=', 71], ['description_sale', '!=', False]],
+        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['description_sale', '!=', False]],
         { 'fields': ['name', 'default_code', 'description_sale', 'description', 'create_date'], 'order': 'create_date' })
 
     # Django pagination

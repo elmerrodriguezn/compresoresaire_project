@@ -10,7 +10,7 @@ def single(request, id):
     data = query.get(
         'product.template',
         'search_read',
-        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['id', '=', id]],
+        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['id', '=', id]],
         {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
 
     context = {"product": data[0]}
@@ -23,7 +23,7 @@ def search(request):
     data = query.get(
         'product.template',
         'search_read',
-        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['name','ilike', q]],
+        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['name','ilike', q]],
         {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
 
     context = {"products": data}
@@ -31,6 +31,8 @@ def search(request):
 
 def filter(request):
     query = Query()
+
+    value = ''
 
     if 'hp' in request.GET:
         hp = request.GET['hp']
@@ -47,7 +49,7 @@ def filter(request):
         if cfm:
             value = cfm
 
-    data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['description_sale','ilike', value]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
+    data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['description_sale','ilike', value]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
 
     context = {"products": data}
     return render(request, 'products/search.html', context)

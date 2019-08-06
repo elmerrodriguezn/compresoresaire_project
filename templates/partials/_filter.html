@@ -2,23 +2,23 @@
     <div class="card-body">
         <form action="{% url 'filter' %}" method="GET" class="form-inline">
             <div class="form-group">
-                <label>HP: </label>
+                <label>HP </label>
             </div>
-            <div class="form-group mx-sm-3">
+            <div class="form-group col-md-3">
                 <input type="text" name="hp" class="form-control" value="{{ request.GET.hp }}" placeholder="HP">
             </div>
 
             <div class="form-group">
-                <label>PSI: </label>
+                <label>PSI </label>
             </div>
-            <div class="form-group mx-sm-3">
+            <div class="form-group col-md-3">
                 <input type="text" name="psig" class="form-control" value="{{ request.GET.psig }}" placeholder="PSIG">
             </div>
 
             <div class="form-group">
-                <label>CFM: </label>
+                <label>CFM </label>
             </div>
-            <div class="form-group mx-sm-3">
+            <div class="form-group col-md-3">
                 <input type="text" name="cfm" class="form-control" value="{{ request.GET.cfm }}" placeholder="CFM">
             </div>
 
