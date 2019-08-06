@@ -120,6 +120,7 @@ body {
   right: 10px;
   top: 10px;
   cursor: pointer;
+  background-color: #ffffff;
 }
 .fa-search {
   color: #B71C1C;
@@ -130,7 +131,9 @@ body {
 /* Footer */
 #main-footer {
   bottom: 0;
-  background-color: #424242;
+  background-color: #B71C1C;
+  color: #ffffff;
+  padding: 30px;
 }
 /* Titles */
 .page-title {

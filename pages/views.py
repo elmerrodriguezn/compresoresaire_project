@@ -33,7 +33,7 @@ def send_lead(request):
     fullName = request.POST['fullName']
     email = request.POST['email']
     phone = request.POST['phone']
-    description = 'Producto: ' + request.POST['productName'], 'Número de parte: ' + request.POST['pn'], 'Mensaje: ' + request.POST['msg']
+    msg = request.POST['msg']
     
     query = Query()
     data = query.create(
@@ -44,7 +44,7 @@ def send_lead(request):
             'contact_name': fullName,
             'email_from': email,
             'phone': phone,
-            'description': description
+            'description': msg
         })
     return redirect('/gracias-por-contactarnos/')
     
