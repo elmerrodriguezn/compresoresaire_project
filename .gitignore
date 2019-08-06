@@ -9,4 +9,4 @@ local_settings.py
 db.sqlite3
 media
 api_connection.py
-api/instance
+api/instance.py

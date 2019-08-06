@@ -17,7 +17,7 @@ def index(request):
         { 'fields': ['name', 'default_code', 'description_sale', 'description', 'create_date'], 'order': 'create_date' })
 
     # Django pagination
-    paginator = Paginator(data, 12)
+    paginator = Paginator(data, 20)
     pages = paginator.get_page(page)
 
     context = {
@@ -33,8 +33,19 @@ def send_lead(request):
     fullName = request.POST['fullName']
     email = request.POST['email']
     phone = request.POST['phone']
-    msg = request.POST['msg']
-    create_lead(fullName, email, phone, msg)
+    description = 'Producto: ' + request.POST['productName'], 'Número de parte: ' + request.POST['pn'], 'Mensaje: ' + request.POST['msg']
+    
+    query = Query()
+    data = query.create(
+        'crm.lead',
+        'create',
+        {
+            'name': 'compresoresaire.com',
+            'contact_name': fullName,
+            'email_from': email,
+            'phone': phone,
+            'description': description
+        })
     return redirect('/gracias-por-contactarnos/')
     
 def thanks(request):

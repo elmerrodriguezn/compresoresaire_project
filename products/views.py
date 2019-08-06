@@ -24,7 +24,30 @@ def search(request):
         'product.template',
         'search_read',
         [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['name','ilike', q]],
-        {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
+        {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
+
+    context = {"products": data}
+    return render(request, 'products/search.html', context)
+
+def filter(request):
+    query = Query()
+
+    if 'hp' in request.GET:
+        hp = request.GET['hp']
+        if hp:
+            value = hp
+    
+    if 'psig' in request.GET:
+        psig = request.GET['psig']
+        if psig:
+            value = psig
+
+    if 'cfm' in request.GET:
+        cfm = request.GET['cfm']
+        if cfm:
+            value = cfm
+
+    data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['description_sale','ilike', value]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
 
     context = {"products": data}
     return render(request, 'products/search.html', context)
