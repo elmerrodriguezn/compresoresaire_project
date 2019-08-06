@@ -1,0 +1,22 @@
+<nav class="nav bg-light justify-content-between mt-4">
+    <div class="col-4 col-md-4 text-left">
+        <div class="btn-group" role="group">
+            {% if products.has_previous %}
+            <a href="?page=1" class="btn btn-light d-none d-sm-none d-md-block">Primera</a>
+            <a href="?page={{ products.previous_page_number }}" class="btn btn-light">Anterior</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-4 col-md-4 text-center align-self-center">
+        Página {{ products.number }} de {{ products.paginator.num_pages }}.
+    </div>
+    <div class="col-4 col-md-4 text-right">
+        <div class="btn-group" role="group">
+            {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}" class="btn btn-light">Siguiente</a>
+            <a href="?page={{ products.paginator.num_pages }}"
+                class="btn btn-light d-none d-sm-none d-md-block">Última</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

@@ -5,21 +5,15 @@
 {% block title %} | {% endblock %}
 
 {% block content %}
-
-
-<section id="search-section">
-
-</section>
-
 <div class="container container-custom">
     {% include 'partials/_filter.html' %}
     <div class="row">
         {% for product in products %}
         <div class="col-md-3">
-            {% include 'products/partials/card.html' %}
+            {% include 'partials/_card.html' %}
         </div>
         {% endfor %}
     </div>
+    {% include 'partials/_pagination.html' %}
 </div>
-
 {% endblock %}

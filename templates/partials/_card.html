@@ -1,0 +1,10 @@
+<a class="card card-custom mb-2 text-decoration-none" href="{% url 'single' product.id %}">
+    <img src="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
+        class="card-img-top zoom" alt="{{ product.name }}">
+    <div class="card-body">
+
+    </div>
+    <div class="card-footer card-footer-custom">
+        <h5>{{ product.name }}</h5>
+    </div>
+</a>

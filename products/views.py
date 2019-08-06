@@ -1,21 +1,49 @@
 from django.shortcuts import render, redirect
-from api.queries import *
+from django.core.paginator import Paginator
+from api.query import Query
 
 def index(request):
-
     return render(request, '')
 
 def single(request, id):
-    return render(request, 'products/single.html', context_detail(id))
+    query = Query()
+    data = query.get(
+        'product.template',
+        'search_read',
+        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['id', '=', id]],
+        {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
+
+    context = {"product": data[0]}
+    
+    return render(request, 'products/single.html', context)
 
 def search(request):
-    q = request.GET['keywords']
-    return render(request, 'products/search.html', context_search(q))
-    
+    q = request.GET['q']
+    query = Query()
+    data = query.get(
+        'product.template',
+        'search_read',
+        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['name','ilike', q]],
+        {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
+
+    context = {"products": data}
+    return render(request, 'products/search.html', context)
+
 def lead(request):
-    fullName = request.GET['fullName']
-    email = request.GET['email']
-    phone = request.GET['phone']
-    description = 'Producto: ' + request.GET.get('productName', False), 'Número de parte Mesabi: ' + request.GET.get('mpn', False), 'Número de parte OEM: ' + request.GET.get('oempn', False), 'Mensaje: ' + request.GET['msg']
-    create_lead(fullName, email, phone, description)
+    fullName = request.POST['fullName']
+    email = request.POST['email']
+    phone = request.POST['phone']
+    description = 'Producto: ' + request.POST['productName'], 'Número de parte: ' + request.POST['pn'], 'Mensaje: ' + request.POST['msg']
+    
+    query = Query()
+    data = query.create(
+        'crm.lead',
+        'create',
+        {
+            'name': 'compresoresaire.com',
+            'contact_name': fullName,
+            'email_from': email,
+            'phone': phone,
+            'description': description
+        })
     return redirect('/gracias-por-contactarnos/')

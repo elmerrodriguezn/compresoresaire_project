@@ -5,4 +5,11 @@
 ///$('#message').fadeOut('slow');
 ///}, 10000);
 
-img = document.getElementsByClassName('img-fluid');
+function showImage() {
+    var id = document.getElementById('img')
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+}

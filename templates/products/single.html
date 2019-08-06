@@ -1,29 +1,52 @@
 {% extends 'base.html' %}
-{% block title %} | {{ detail.name }} {% endblock %}
+{% block title %} | {{ product.name }} {% endblock %}
 {% load static %}
 {% block content %}
 <div class="container container-custom">
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
-                    <img src="https://lymservicios.odoo.com/web/image?model=product.template&id={{ detail.id }}&field=image"
-                        class="img-fuid" alt="detail.name">
+                <div class="col-md-4">
+                    <a href="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
+                        data-lightbox="img-fluid">
+                        <img src="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
+                            alt="{{ product.name }}" class="img-fluid img-thumbnail" width="300">
+                    </a>
+                    <p class="text-center mt-2"><i class="fas fa-search-plus"></i> Click imagen para ampliar</p>
+                </div>
+
+                <div class="col-md-8">
+                    <a href="{% url 'index' %}" class="btn-link"><i class="fas fa-chevron-left"></i> Regresar a la
+                        lista de productos</a>
+                    <h3 class="title">{{ product.name }}</h3>
+                    {% if product.description == False or product.description == '' %}
+                    <p class="description">Somos una empresa distribuidora de <img
+                            src="http://www.lymservicios.mx/web/image/10428/ir-logo-red.png" width="100"
+                            class="img-fluid" id="IR-logo"> que opera desde
+                        2005 con
+                        técnicos
+                        especializados para diseñar,
+                        instalar y brindar mantenimiento a sistemas con tecnología de tornillo, lubricados y libre de
+                        aceite.</p>
+                    {% else %}
+                    <p class="description">{{ product.description }}</p>
+                    {% endif %}
+                    <p>Para más información visite <a href="http://www.lymservicios.mx"
+                            class="btn-link">www.lymservicios.mx</a></p>
                 </div>
                 <div class="col-md-6">
-                    <h3 class="title">{{ detail.name }}</h3>
-                    <p class="description">{{ detail.description }}</p>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <p class="lead">Especificaciones</p>
+                    <div class="card card-custom">
+                        <div class="card-header-custom">
+                            Especificaciones
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Número de parte: {{ detail.default_code }}</li>
-                            <li class="list-group-item">{{ detail.description_sale|linebreaksbr }}</li>
+                            <li class="list-group-item">Número de parte: {{ product.default_code }}</li>
+                            <li class="list-group-item">{{ product.description_sale|linebreaksbr }}</li>
                         </ul>
                     </div>
+                </div>
+                <div class="col-md-6">
+                    {% include 'products/forms/product.html' %}
                 </div>
             </div>
         </div>
