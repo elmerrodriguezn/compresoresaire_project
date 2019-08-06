@@ -2,9 +2,6 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from api.query import Query
 
-def index(request):
-    return render(request, '')
-
 def single(request, id):
     query = Query()
     data = query.get(
