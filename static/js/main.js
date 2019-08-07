@@ -5,6 +5,9 @@ var getYear;
 })();
 
 var menuIcon;
-(menuIcon = function () {
-    alert('hello');
+(menuIcon = function (x) {
+    if (x) {
+        x.classList.toggle("change");
+    }
+
 })();
