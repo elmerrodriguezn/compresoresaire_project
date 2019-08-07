@@ -3,13 +3,17 @@
   <a class="navbar-brand" href="{% url 'index' %}">
     <img src="{% static 'img/logo.png' %}" width="100">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-    <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    onclick="menuIcon()" id="buttonIcon">
+    <span id="icon"><i class="fas fa-bars"></i></i></span>
   </button>
 
+  <div id="search-bar-mobile">
+    {% include 'partials/_search_bar.html' %}
+  </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class=" col-md-7 offset-md-2">
+    <div class=" col-md-7 offset-md-2" id="search-bar">
       {% include './_search_bar.html' %}
     </div>
     <ul class="navbar-nav ml-auto">

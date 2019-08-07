@@ -5,10 +5,7 @@ from api.query import Query
 def single(request, id):
     query = Query()
     data = query.get(
-        'product.template',
-        'search_read',
-        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['id', '=', id]],
-        {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
+        'product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['id', '=', id]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
 
     context = {"product": data[0]}
     
@@ -17,11 +14,7 @@ def single(request, id):
 def search(request):
     q = request.GET['q']
     query = Query()
-    data = query.get(
-        'product.template',
-        'search_read',
-        [['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['name','ilike', q]],
-        {'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
+    data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['name','ilike', q]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
 
     context = {"products": data}
     return render(request, 'products/search.html', context)

@@ -1,31 +1,32 @@
 <div class="card card-custom">
     <div class="card-body">
-        <form action="{% url 'filter' %}" method="GET" class="form-inline">
-            <div class="form-group">
-                <label>HP</label>
-            </div>
-            <div class="form-group col-12 col-md-3">
-                <input type="text" name="hp" class="form-control" value="{{ request.GET.hp }}" placeholder="HP">
-            </div>
+        <form action="{% url 'filter' %}" method="GET">
+            <div class="form-row justify-content-center">
+                <div class="col-10 col-md-2 mb-2">
+                    <input type="text" name="hp" class="form-control" value="{{ request.GET.hp }}" placeholder="HP">
+                </div>
+                <div class="col-2 col-md-1 mt-2">
+                    <label>HP</label>
+                </div>
 
-            <div class="form-group">
-                <label>PSI</label>
-            </div>
-            <div class="form-group col-12 col-md-3">
-                <input type="text" name="psig" class="form-control" value="{{ request.GET.psig }}" placeholder="PSIG">
-            </div>
+                <div class="col-10 col-md-2 mb-2">
+                    <input type="text" name="psig" class="form-control" value="{{ request.GET.psig }}"
+                        placeholder="PSIG">
+                </div>
+                <div class="col-2 col-md-1 mt-2">
+                    <label>PSI</label>
+                </div>
 
-            <div class="form-group">
-                <label>CFM</label>
-            </div>
-            <div class="form-group col-12 col-md-3">
-                <input type="text" name="cfm" class="form-control" value="{{ request.GET.cfm }}" placeholder="CFM">
-            </div>
-            <div class="form-group d-sm-none d-sm-block d-lg-block d-xl-block col-md-1">
-                <button class="btn-search-filter" type="submit"><i class="fas fa-search fa-lg"></i></button>
-            </div>
-            <div class="form-group d-sm-block  d-md-none d-ld-none col-md-3">
-                <button class="btn btn-block btn-primary-custom" type="submit">Buscar</button>
+                <div class="col-10 col-md-2 mb-2">
+                    <input type="text" name="cfm" class="form-control" value="{{ request.GET.cfm }}" placeholder="CFM">
+                </div>
+                <div class="col-2 col-md-1 mt-2">
+                    <label>CFM</label>
+                </div>
+
+                <button class="btn-search-filter ml-2" type="submit"><i class="fas fa-search fa-lg"></i></button>
+
+                <button class="btn btn-block btn-primary-custom btn-search-filter-sm" type="submit">Buscar</button>
             </div>
         </form>
     </div>
