@@ -19,8 +19,17 @@
     <link
         href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Mukta|Paytone+One|Roboto|Staatliches&display=swap"
         rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92798008-8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92798008-8');
+    </script>
     <!-- Odoo Chat -->
-    <link rel="stylesheet" href="http://www.lymservicios.mx/im_livechat/external_lib.css"/>
+    <link rel="stylesheet" href="http://www.lymservicios.mx/im_livechat/external_lib.css" />
     <title>LyM Servicios {% block title %}{% endblock %}</title>
     <meta name="description"
         content="Somos una empresa distribuidora de Ingersoll Rand&copy; que opera desde 2005 con técnicos especializados para diseñar, instalar y brindar mantenimiento a sistemas con tecnología de tornillo, lubricados y libre de aceite." />
