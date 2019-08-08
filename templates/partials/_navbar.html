@@ -3,12 +3,12 @@
   <a class="navbar-brand" href="{% url 'index' %}">
     <img src="{% static 'img/logo.png' %}" width="100">
   </a>
-  <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    onclick="menuIcon(this)">
+  <button class="navbar-toggler navbar-toggler-custom" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" onclick="menuIcon(this)">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
-  </div>
+  </button>
 
   <div id="search-bar-mobile">
     {% include 'partials/_search_bar.html' %}
