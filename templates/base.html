@@ -3,6 +3,15 @@
 <html lang="es-mx">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92798008-8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('UA-92798008-8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,15 +28,6 @@
     <link
         href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Mukta|Paytone+One|Roboto|Staatliches&display=swap"
         rel="stylesheet">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92798008-8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-92798008-8');
-    </script>
     <!-- Odoo Chat -->
     <link rel="stylesheet" href="http://www.lymservicios.mx/im_livechat/external_lib.css" />
     <title>LyM Servicios {% block title %}{% endblock %}</title>
@@ -52,8 +52,8 @@
     <script src="{% static 'js/lightbox.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <!-- Odoo Chat -->
-    <script type="text/javascript" src="http://www.lymservicios.mx/im_livechat/external_lib.js"></script>
-    <script type="text/javascript" src="http://www.lymservicios.mx/im_livechat/loader/1"></script>
+    <script async type="text/javascript" src="http://www.lymservicios.mx/im_livechat/external_lib.js"></script>
+    <script async type="text/javascript" src="http://www.lymservicios.mx/im_livechat/loader/1"></script>
 </body>
 
 </html>
