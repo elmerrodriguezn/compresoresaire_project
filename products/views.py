@@ -4,8 +4,8 @@ from api.query import Query
 
 def single(request, id):
     query = Query()
-    data = query.get(
-        'product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['id', '=', id]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
+
+    data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['id', '=', id]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'] })
 
     context = {"product": data[0]}
     
@@ -13,10 +13,13 @@ def single(request, id):
 
 def search(request):
     q = request.GET['q']
+
     query = Query()
+
     data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['name','ilike', q]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
 
     context = {"products": data}
+    
     return render(request, 'products/search.html', context)
 
 def filter(request):
@@ -27,21 +30,22 @@ def filter(request):
     if 'hp' in request.GET:
         hp = request.GET['hp']
         if hp:
-            value = hp
+            value = "{} HP".format(hp)
     
     if 'psig' in request.GET:
         psig = request.GET['psig']
         if psig:
-            value = psig
+            value = "{} PSIG".format(psig)
 
     if 'cfm' in request.GET:
         cfm = request.GET['cfm']
         if cfm:
-            value = cfm
+            value = "{} CFM".format(cfm)
 
-    data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['description_sale','ilike', value]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
+    data = query.get('product.template','search_read',[['type', '=', 'product'],['categ_id.parent_id', '=', 71],['x_studio_field_tGMk6', '=', True],['description_sale','like', value]],{'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment','create_date'], 'limit': 20 })
 
     context = {"products": data}
+
     return render(request, 'products/search.html', context)
 
 def lead(request):
@@ -51,14 +55,7 @@ def lead(request):
     description = 'Producto: ' + request.POST['productName'], 'Número de parte: ' + request.POST['pn'], 'Mensaje: ' + request.POST['msg']
     
     query = Query()
-    data = query.create(
-        'crm.lead',
-        'create',
-        {
-            'name': 'compresoresaire.com',
-            'contact_name': fullName,
-            'email_from': email,
-            'phone': phone,
-            'description': description
-        })
+
+    data = query.create('crm.lead','create',{'name': 'compresoresaire.com','contact_name': fullName,'email_from': email,'phone': phone,'description': description})
+
     return redirect('/gracias-por-contactarnos/')
