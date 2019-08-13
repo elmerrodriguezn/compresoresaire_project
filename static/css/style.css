@@ -91,10 +91,6 @@ body {
   font-weight: 800;
   text-decoration: none;
 }
-.btn-search-filter:focus,.btn-search-filter:active {
-  outline: none;
-  box-shadow: none;
-}
 /* Forms */
 .form-control {
   border-radius: 0;
@@ -245,22 +241,6 @@ body {
     color: #C62828;
     font-weight: 800;
     text-decoration: none;
-  }
-  .btn-search-filter {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: block;
-  }
-  .btn-search-filter-sm {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: none;
-  }
-  .btn-search-filter:focus,.btn-search-filter:active {
-    outline: none;
-    box-shadow: none;
   }
   /* Forms */
   .form-control {
@@ -433,18 +413,6 @@ body {
     color: #C62828;
     font-weight: 800;
     text-decoration: none;
-  }
-  .btn-search-filter {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-search-filter-sm {
-    display: none;
-  }
-  .btn-search-filter:focus,.btn-search-filter:active {
-    outline: none;
-    box-shadow: none;
   }
   /* Forms */
   .form-control {
@@ -623,15 +591,6 @@ body {
     font-weight: 800;
     text-decoration: none;
   }
-  .btn-search-filter {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-search-filter:focus,.btn-search-filter:active {
-    outline: none;
-    box-shadow: none;
-  }
   /* Forms */
   .form-control {
     border-radius: 0;
@@ -809,16 +768,6 @@ body {
     color: #C62828;
     font-weight: 800;
     text-decoration: none;
-  }
-  .btn-search-filter {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: none;
-  }
-  .btn-search-filter:focus,.btn-search-filter:active {
-    outline: none;
-    box-shadow: none;
   }
   /* Forms */
   .form-control {
@@ -999,19 +948,6 @@ body {
     color: #C62828;
     font-weight: 800;
     text-decoration: none;
-  }
-  .btn-search-filter {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: none;
-  }
-  .btn-search-filter-sm {
-    display: block;
-  }
-  .btn-search-filter:focus,.btn-search-filter:active {
-    outline: none;
-    box-shadow: none;
   }
   /* Forms */
   .form-control {

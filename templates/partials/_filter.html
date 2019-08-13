@@ -3,30 +3,26 @@
         <form action="{% url 'filter' %}" method="GET">
             <div class="form-row justify-content-center">
                 <div class="col-10 col-md-2 mb-2">
-                    <input type="text" name="hp" class="form-control" value="{{ request.GET.hp }}" placeholder="HP">
+                    <input type="text" name="hp" class="form-control" value="{{ request.GET.hp }}">
                 </div>
                 <div class="col-2 col-md-1 mt-2">
                     <label>HP</label>
                 </div>
 
                 <div class="col-10 col-md-2 mb-2">
-                    <input type="text" name="psig" class="form-control" value="{{ request.GET.psig }}"
-                        placeholder="PSIG">
+                    <input type="text" name="psig" class="form-control" value="{{ request.GET.psig }}">
                 </div>
                 <div class="col-2 col-md-1 mt-2">
                     <label>PSIG</label>
                 </div>
 
                 <div class="col-10 col-md-2 mb-2">
-                    <input type="text" name="cfm" class="form-control" value="{{ request.GET.cfm }}" placeholder="CFM">
+                    <input type="text" name="cfm" class="form-control" value="{{ request.GET.cfm }}">
                 </div>
                 <div class="col-2 col-md-1 mt-2">
                     <label>CFM</label>
                 </div>
-
-                <button class="btn-search-filter ml-2" type="submit"><i class="fas fa-search fa-lg"></i></button>
-
-                <button class="btn btn-block btn-primary-custom btn-search-filter-sm" type="submit">Buscar</button>
+                <button class="btn btn-primary-custom" type="submit">Aplicar</button>
             </div>
         </form>
     </div>
