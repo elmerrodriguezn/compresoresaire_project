@@ -3,8 +3,8 @@
 {% block title %} | Búsqueda {% endblock %}
 {% block content%}
 <div class="container container-custom">
+{% include 'partials/_filter.html' %}
     {% if products %}
-    {% include 'partials/_filter.html' %}
     <div class="row">
         {% for product in products %}
         <div class="col-md-3">
@@ -13,11 +13,11 @@
         {% endfor %}
 
         {% else %}
-        <div class="card card-custom">
+        <div class="card card-custom mt-4">
             <div class="card-body">
                 <div class="col-md-6">
-                    <p>No se encontró el producto, contáctanos seguro te podemos ayudar</p>
-                    {% include 'products/forms/_contact.html' %}
+                    <h3>No se encontró el producto, contáctanos seguro te podemos ayudar</h3>
+                    {% include 'pages/partials/_form.html' %}
                 </div>
             </div>
         </div>

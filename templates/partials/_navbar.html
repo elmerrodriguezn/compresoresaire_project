@@ -1,6 +1,7 @@
 {% load static %}
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{% url 'index' %}">
+    <div class="container">
+         <a class="navbar-brand" href="{% url 'index' %}">
     <img src="{% static 'img/logo.png' %}" width="100">
   </a>
   <button class="navbar-toggler navbar-toggler-custom" type="button" data-toggle="collapse"
@@ -24,4 +25,5 @@
       </li>
     </ul>
   </div>
+    </div>
 </nav>

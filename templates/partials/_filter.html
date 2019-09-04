@@ -3,21 +3,21 @@
         <form action="{% url 'filter' %}" method="GET">
             <div class="form-row justify-content-center">
                 <div class="col-10 col-md-2 mb-2">
-                    <input type="text" name="hp" class="form-control" value="{{ request.GET.hp }}">
+                    <input type="number" name="hp" class="form-control" value="{{ request.GET.hp }}">
                 </div>
                 <div class="col-2 col-md-1 mt-2">
                     <label>HP</label>
                 </div>
 
                 <div class="col-10 col-md-2 mb-2">
-                    <input type="text" name="psig" class="form-control" value="{{ request.GET.psig }}">
+                    <input type="number" name="psig" class="form-control" value="{{ request.GET.psig }}">
                 </div>
                 <div class="col-2 col-md-1 mt-2">
                     <label>PSIG</label>
                 </div>
 
                 <div class="col-10 col-md-2 mb-2">
-                    <input type="text" name="cfm" class="form-control" value="{{ request.GET.cfm }}">
+                    <input type="number" name="cfm" class="form-control" value="{{ request.GET.cfm }}">
                 </div>
                 <div class="col-2 col-md-1 mt-2">
                     <label>CFM</label>
