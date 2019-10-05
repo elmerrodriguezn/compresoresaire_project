@@ -77,6 +77,7 @@ def lead(request):
         data = query.create('crm.lead', 'create',
                             {
                                 'name': 'compresoresaire.com',
+                                'user_id': 14,
                                 'contact_name': full_name,
                                 'email_from': email,
                                 'phone': phone,
