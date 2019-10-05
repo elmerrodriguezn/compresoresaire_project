@@ -1,6 +1,6 @@
 <form action="{% url 'product_lead' %}" method="POST">
     {% csrf_token %}
-    <div class="alert alert-primary alert-primary-custom">
+    <div class="alert alert-light">
         <div class="row">
             <div class="col-md-1 col-2 align-self-center">
                 <i class="fas fa-info fa-3x"></i>
@@ -36,5 +36,6 @@
         <label for="msg">Mensaje:</label>
         <textarea class="form-control" name="msg" id="msg"></textarea>
     </div>
+    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
     <button type="submit" class="btn btn-primary-custom btn-block">Enviar</button>
 </form>

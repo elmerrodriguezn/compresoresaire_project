@@ -1,0 +1,10 @@
+<script src='https://www.google.com/recaptcha/api.js?render=6LfR-bsUAAAAACucebjmM41jgNVGp3YFheOSxPRu'></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LfR-bsUAAAAACucebjmM41jgNVGp3YFheOSxPRu', {action: 'compresoresaire'})
+        .then(function(token) {
+        var recaptchaResponse = document.getElementById('recaptchaResponse');
+        recaptchaResponse.value = token;
+        });
+    });
+</script>

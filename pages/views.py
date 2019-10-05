@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from api.query import Query
+from modules.recaptcha import recaptcha
 
-
-# Create your views here.
 
 def index(request):
     page = request.GET.get('page', 1)
@@ -41,19 +40,20 @@ def send_lead(request):
     msg = request.POST['msg']
     
     query = Query()
-    
-    data = query.create(
-        'crm.lead',
-        'create',
-        {
-            'name': 'compresoresaire.com',
-            'contact_name': full_name,
-            'email_from': email,
-            'phone': phone,
-            'description': msg
-        })
-    
-    return redirect('/gracias-por-contactarnos/')
+    if request.method == 'POST' and recaptcha(request):
+        data = query.create(
+            'crm.lead',
+            'create',
+            {
+                'name': 'compresoresaire.com',
+                'contact_name': full_name,
+                'email_from': email,
+                'phone': phone,
+                'description': msg
+            })
+        return redirect('thanks')
+    else:
+        return redirect('index')
 
 
 def thanks(request):

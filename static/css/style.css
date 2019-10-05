@@ -147,6 +147,9 @@ body {
   color: #ffffff;
   padding: 30px;
 }
+.grecaptcha-badge{
+display:none !important;
+}
 /* Responsive */
 @media (min-width: 1280px) {
   /* Global style */
