@@ -127,7 +127,7 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LfR-bsUAAAAAGPF7r9PF1SfP59mlLeffHXoQyaP'
+GOOGLE_RECAPTCHA_SECRET_KEY = '_SECRET_KEY_'
 
 try:
     from .local_settings import *
