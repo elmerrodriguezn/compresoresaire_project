@@ -70,7 +70,7 @@ def lead(request):
         email = request.POST['email']
         phone = request.POST['phone']
         description = \
-            'Producto: ' + request.POST['productName'], 'Número de parte: ' + request.POST['pn'], 'Mensaje: ' + request.POST['msg']
+            'Producto: ' + request.POST['product_name'], 'Número de parte: ' + request.POST['pn'], 'Mensaje: ' + request.POST['msg']
 
         query = Query()
 
