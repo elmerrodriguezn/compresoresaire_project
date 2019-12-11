@@ -1,16 +1,43 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from api.query import Query
 from modules.recaptcha import recaptcha
 
 
-def single(request, id):
+def index(request, category_id):
+    page = request.GET.get('page', 1)
+
     query = Query()
 
     data = query.get('product.template', 'search_read',
-                     [['type', '=', 'product'], ['categ_id.parent_id', '=', 71], ['x_studio_field_tGMk6', '=', True],
-                      ['id', '=', id]], {
-                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment',
+                     [['type', '=', 'product'], ['x_studio_field_tGMk6', '=', True],
+                      ['categ_id', '=', int(category_id)]], {
+                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
                                     'create_date']})
+
+    paginator = Paginator(data, 20)
+
+    pages = paginator.get_page(page)
+
+    context = {"products": pages}
+
+    return render(request, 'products/index.html', context)
+
+
+def single(request, category_id, product_id):
+    query = Query()
+
+    #['categ_id.parent_id', '=', 71]
+
+    data = query.get('product.template', 'search_read',
+                     [
+                         ['type', '=', 'product'], ['x_studio_field_tGMk6', '=', True],
+                         ['id', '=', product_id],
+                         ['categ_id', '=', int(category_id)]
+
+                      ], {
+                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
+                                    'create_date', 'qty_available', 'list_price', 'weight']})
 
     context = {"product": data[0]}
 
@@ -25,7 +52,7 @@ def search(request):
     data = query.get('product.template', 'search_read',
                      [['type', '=', 'product'], ['categ_id.parent_id', '=', 71], ['x_studio_field_tGMk6', '=', True],
                       ['name', 'ilike', q]], {
-                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment',
+                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
                                     'create_date'], 'limit': 20})
 
     context = {"products": data}
@@ -56,7 +83,7 @@ def filter(request):
     data = query.get('product.template', 'search_read',
                      [['type', '=', 'product'], ['categ_id.parent_id', '=', 71], ['x_studio_field_tGMk6', '=', True],
                       ['description_sale', 'like', value]], {
-                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'attachment',
+                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
                                     'create_date'], 'limit': 20})
 
     context = {"products": data}

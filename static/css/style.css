@@ -108,7 +108,6 @@ body {
   border-radius: 60px;
 }
 .form-search .btn-search {
-  background-color: transparent;
   border: none;
   position: absolute;
   right: 10px;
@@ -133,6 +132,9 @@ body {
 }
 .description {
   padding: 20px 0 20px 0;
+}
+label {
+  color: #6c757d;
 }
 /* Alert */
 .alert-primary-custom {

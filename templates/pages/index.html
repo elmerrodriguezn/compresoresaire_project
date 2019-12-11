@@ -6,14 +6,19 @@
 
 {% block content %}
 <div class="container container-custom">
-    {% include 'partials/_filter.html' %}
-    <div class="row">
-        {% for product in products %}
-        <div class="col-md-3">
-            {% include 'partials/_card.html' %}
-        </div>
-        {% endfor %}
-    </div>
-    {% include 'partials/_pagination.html' %}
+ {% regroup products|dictsort:"categ_id" by categ_id as category_list %}
+ {% for categ_id in category_list %}
+     <h5 class="text-muted mt-4">{{ categ_id.grouper.1 }} <small><a class="ml-4" href="{% url 'products.index' categ_id.grouper.0 %}">Ver más</a></small></h5>
+     <div class="row">
+     {% for product in categ_id.list %}
+         {{ product.categ_id.name }}
+         {% if forloop.counter  <= 4 %}
+         <div class="col-md-3">
+         {% include 'partials/_card.html' %}
+         </div>
+         {% endif %}
+     {% endfor %}
+     </div>
+ {% endfor %}
 </div>
 {% endblock %}
