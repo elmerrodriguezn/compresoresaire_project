@@ -3,7 +3,21 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
+
     <div class="container container-custom">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-custom">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Página de inicio</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'products.category' product.categ_id.0 %}">
+                {% if product.categ_id.0 == 83  %}
+                    {{ product.categ_id.1|slice:"35:" }}
+                {% else %}
+                    {{ product.categ_id.1|slice:"43:" }}
+                {% endif %}
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ product.x_studio_field_RHdO5 }}</li>
+          </ol>
+        </nav>
 
         <div class="card-group">
 
@@ -12,7 +26,7 @@
                     <a href="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
                        data-lightbox="img-fluid">
                         <img src="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
-                             alt="{{ product.name }}" class="img-fluidl" width="300">
+                             alt="{{ product.name }}" class="img-fluid">
                     </a>
                     <p class="text-center mt-2"><i class="fas fa-search-plus"></i> Click imagen para ampliar</p>
                 </div>
@@ -58,21 +72,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Marca:</label>
-                            <p>{{ product.weight }}</p>
+                            <p>{{ product.x_studio_field_04Kkp.1 }}</p>
                             <label>Capacidad del tanque:</label>
-                            <p>{{ product.weight }} gal</p>
-                            <label>Caudal de aire:</label>
-                            <p>{{ product.weight }} m³/h</p>
+                            <p>{{ product.x_studio_field_pxZa1 }} gal</p>
+                            <label>Flujo máximo:</label>
+                            <p>{{ product.x_studio_field_pYf9c }} cfm</p>
                             <label>Peso:</label>
                             <p>{{ product.weight }} kg</p>
                         </div>
                         <div class="col-md-6">
                             <label>Modelo:</label>
-                            <p>{{ product.weight }}</p>
+                            <p>{{ product.x_studio_field_RHdO5 }}</p>
                             <label>Potencia:</label>
-                            <p>{{ product.weight }} hp</p>
+                            <p>{{ product.x_studio_field_ZY0DV }} hp</p>
                             <label>Presión máxima:</label>
-                            <p>{{ product.weight }} psi</p>
+                            <p>{{ product.x_studio_field_9fT7c }} psi</p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} | Expertos en soluciones a la medida {% endblock %}
+
+{% block content %}
+    <div class="container container-custom">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-custom">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Página de inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ products.0.categ_id.1|slice:"44:" }}
+                </li>
+            </ol>
+        </nav>
+        {% include 'partials/_filter.html' %}
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-3">
+                    {% include 'partials/_card.html' %}
+                </div>
+            {% endfor %}
+        </div>
+        {% include 'partials/_pagination.html' %}
+    </div>
+{% endblock %}

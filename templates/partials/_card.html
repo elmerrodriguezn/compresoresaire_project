@@ -4,6 +4,6 @@
     </div>
     <div class="card-body"></div>
     <div class="card-footer card-footer-custom">
-        <h5>{{ product.name }}</h5>
+        <h5>{{ product.name|upper|slice:50 }}</h5>
     </div>
 </a>

@@ -9,11 +9,19 @@ def index(request, category_id):
 
     query = Query()
 
-    data = query.get('product.template', 'search_read',
-                     [['type', '=', 'product'], ['x_studio_field_tGMk6', '=', True],
-                      ['categ_id', '=', int(category_id)]], {
-                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
-                                    'create_date']})
+    data = query.get(
+        'product.template',
+        'search_read',
+        [
+            ['type', '=', 'product'],
+            ['x_studio_field_tGMk6', '=', True],
+            ['categ_id', '=', int(category_id)]
+        ],
+        {
+            'fields':
+            ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date']
+        }
+        )
 
     paginator = Paginator(data, 20)
 
@@ -21,27 +29,46 @@ def index(request, category_id):
 
     context = {"products": pages}
 
-    return render(request, 'products/index.html', context)
+    if data[0]['categ_id'][0] in [72, 73, 74]:
+        return render(request, 'products/compressors/index.html', context)
+    if data[0]['categ_id'][0] == 83:
+        return render(request, 'products/parts/index.html', context)
 
 
 def single(request, category_id, product_id):
     query = Query()
 
-    #['categ_id.parent_id', '=', 71]
+    data = query.get(
+        'product.template',
+        'search_read',
+        [
+            ['type', '=', 'product'],
+            ['x_studio_field_tGMk6', '=', True],
+            ['id', '=', product_id],
+        ],
+        {
+            'fields':
+                [
+                    #Brand -> x_studio_field_04Kkp
+                    #Tank -> x_studio_field_pxZa1
+                    #Flow -> x_studio_field_pYf9c
+                    #Model -> x_studio_field_RHdO5
+                    #Power -> x_studio_field_ZY0DV
+                    #Pressure -> x_studio_field_9fT7c
 
-    data = query.get('product.template', 'search_read',
-                     [
-                         ['type', '=', 'product'], ['x_studio_field_tGMk6', '=', True],
-                         ['id', '=', product_id],
-                         ['categ_id', '=', int(category_id)]
-
-                      ], {
-                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
-                                    'create_date', 'qty_available', 'list_price', 'weight']})
+                    'id', 'name', 'default_code', 'description_sale',
+                    'description', 'categ_id', 'create_date', 'qty_available',
+                    'list_price', 'weight', 'x_studio_field_04Kkp', 'x_studio_field_RHdO5',
+                    'x_studio_field_pxZa1', 'x_studio_field_ZY0DV', 'x_studio_field_pYf9c', 'x_studio_field_9fT7c',
+                ]
+        })
 
     context = {"product": data[0]}
 
-    return render(request, 'products/single.html', context)
+    if data[0]['categ_id'][0] in [72, 73, 74]:
+        return render(request, 'products/compressors/detail.html', context)
+    if data[0]['categ_id'][0] == 83:
+        return render(request, 'products/parts/detail.html', context)
 
 
 def search(request):
@@ -49,11 +76,19 @@ def search(request):
 
     query = Query()
 
-    data = query.get('product.template', 'search_read',
-                     [['type', '=', 'product'], ['categ_id.parent_id', '=', 71], ['x_studio_field_tGMk6', '=', True],
-                      ['name', 'ilike', q]], {
-                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
-                                    'create_date'], 'limit': 20})
+    data = query.get(
+        'product.template',
+        'search_read',
+        [
+            ['type', '=', 'product'],
+            ['categ_id.parent_id', 'in', [71, 79]],
+            ['x_studio_field_tGMk6', '=', True],
+            ['name', 'ilike', q]
+        ],
+        {
+            'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
+            'limit': 20
+        })
 
     context = {"products": data}
 
@@ -68,23 +103,30 @@ def filter(request):
     if 'hp' in request.GET:
         hp = request.GET['hp']
         if hp:
-            value = "{} HP".format(hp)
+            value = ['x_studio_field_ZY0DV', '=', hp]
 
     if 'psig' in request.GET:
         psig = request.GET['psig']
         if psig:
-            value = "{} PSIG".format(psig)
+            value = ['x_studio_field_9fT7c', '=', psig]
 
     if 'cfm' in request.GET:
         cfm = request.GET['cfm']
         if cfm:
-            value = "{} CFM".format(cfm)
+            value = ['x_studio_field_pYf9c', '=', cfm]
 
-    data = query.get('product.template', 'search_read',
-                     [['type', '=', 'product'], ['categ_id.parent_id', '=', 71], ['x_studio_field_tGMk6', '=', True],
-                      ['description_sale', 'like', value]], {
-                         'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id',
-                                    'create_date'], 'limit': 20})
+    data = query.get(
+        'product.template',
+        'search_read',
+        [
+            ['type', '=', 'product'],
+            ['x_studio_field_tGMk6', '=', True],
+            ['categ_id.parent_id', 'in', [71, 79]],
+            value,
+        ],
+        {
+            'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
+            'limit': 20})
 
     context = {"products": data}
 

@@ -8,10 +8,16 @@
 <div class="container container-custom">
  {% regroup products|dictsort:"categ_id" by categ_id as category_list %}
  {% for categ_id in category_list %}
-     <h5 class="text-muted mt-4">{{ categ_id.grouper.1 }} <small><a class="ml-4" href="{% url 'products.index' categ_id.grouper.0 %}">Ver más</a></small></h5>
+     <h5 class="text-muted mt-4">
+         {% if categ_id.grouper.0 == 83  %}
+            {{ categ_id.grouper.1|slice:"35:" }}
+         {% else %}
+             {{ categ_id.grouper.1|slice:"43:" }}
+         {% endif %}
+         <small><a class="ml-4" href="{% url 'products.category' categ_id.grouper.0 %}">Ver más</a></small>
+     </h5>
      <div class="row">
      {% for product in categ_id.list %}
-         {{ product.categ_id.name }}
          {% if forloop.counter  <= 4 %}
          <div class="col-md-3">
          {% include 'partials/_card.html' %}

@@ -67,6 +67,17 @@ body {
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   align-content: center;
 }
+.breadcrumb-custom {
+  background-color: #ffffff;
+  border-radius: 0;
+}
+.breadcrumb-custom .breadcrumb-item {
+  color: #B71C1C;
+  font-weight: 800;
+}
+.breadcrumb-custom .breadcrumb-item a {
+  color: #000000;
+}
 /* Buttons */
 .btn-primary-custom {
   background-color:#C52027;;
