@@ -1,0 +1,14 @@
+{% if product.description == False or product.description == '' %}
+    <p class="description">Somos una empresa distribuidora de <img
+            src="http://www.lymservicios.mx/web/image/10428/ir-logo-red.png" width="100" class="img-fluid" id="IR-logo"
+            alt="Logo Ingersoll Rand"> que opera desde
+        2005 con
+        técnicos
+        especializados para diseñar,
+        instalar y brindar mantenimiento a sistemas con tecnología de tornillo, lubricados y
+        libre de
+        aceite.</p>
+{% else %}
+    <p class="description">{{ product.description|linebreaksbr }}</p>
+{% endif %}
+ <p>Para más información visite <a href="https://www.lymservicios.mx" class="btn-link">www.lymservicios.mx</a></p>

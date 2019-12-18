@@ -1,63 +1,26 @@
 {% extends 'base.html' %}
 {% block title %} | {{ product.name }} {% endblock %}
 {% load static %}
-{% load humanize %}
 {% block content %}
     <div class="container container-custom">
-    <nav aria-label="breadcrumb">
-          <ol class="breadcrumb breadcrumb-custom">
-            <li class="breadcrumb-item"><a href="{% url 'index' %}">Página de inicio</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'products.category' product.categ_id.0 %}">
-                {% if product.categ_id.0 == 83  %}
-                    {{ product.categ_id.1|slice:"35:" }}
-                {% else %}
-                    {{ product.categ_id.1|slice:"43:" }}
-                {% endif %}
-            </a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ product.default_code }}</li>
-          </ol>
-        </nav>
+        {% include 'products/partials/_breadcrumb_level3.html' %}
         <div class="card-group">
 
             <div class="card" style="max-width: 40rem;">
                 <div class="card-body text-center">
-                    <a href="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
-                       data-lightbox="img-fluid">
-                        <img src="https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
-                             alt="{{ product.name }}" class="img-fluid">
-                    </a>
-                    <p class="text-center mt-2"><i class="fas fa-search-plus"></i> Click imagen para ampliar</p>
+                    {% include 'products/partials/_image.html' %}
                 </div>
             </div>
 
 
             <div class="card">
                 <div class="card-body">
-                    <a href="{% url 'index' %}" class="btn-link"><i class="fas fa-chevron-left"></i> Regresar a
-                        la
-                        lista de productos</a>
-                    <h3 class="title">{{ product.name }}</h3>
-                    <p class="price">{{ product.list_price|intcomma }}</p>
-                    {% if product.qty_available|floatformat >= "1" %}
-                        <p>Stock disponible</p>
-                    {% else %}
-                        Sin Stock
-                    {% endif %}
-                    {% if product.description == False or product.description == '' %}
-                        <p class="description">Somos una empresa distribuidora de <img
-                                src="http://www.lymservicios.mx/web/image/10428/ir-logo-red.png" width="100"
-                                class="img-fluid" id="IR-logo" alt="Logo Ingersoll Rand"> que opera desde
-                            2005 con
-                            técnicos
-                            especializados para diseñar,
-                            instalar y brindar mantenimiento a sistemas con tecnología de tornillo, lubricados y
-                            libre de
-                            aceite.</p>
-                    {% else %}
-                        <p class="description">{{ product.description|linebreaksbr }}</p>
-                    {% endif %}
-                    <p>Para más información visite <a href="https://www.lymservicios.mx"
-                                                      class="btn-link">www.lymservicios.mx</a></p>
+                    <a href="{% url 'index' %}" class="btn-link"><i class="fas fa-chevron-left"></i> Regresar a la lista
+                        de productos</a>
+                    <h1 class="title">{{ product.name }}</h1>
+                    {% include 'products/partials/_price.html' %}
+                    {% include 'products/partials/_stock.html' %}
+                    {% include 'products/partials/_description.html' %}
                 </div>
             </div>
         </div>

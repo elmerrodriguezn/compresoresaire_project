@@ -1,0 +1,6 @@
+{% load humanize %}
+{% if product.list_price <= '1.0' %}
+    <p class="price">{{ product.list_price|intcomma }}</p>
+{% else %}
+   
+{% endif %}

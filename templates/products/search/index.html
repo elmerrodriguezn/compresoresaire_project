@@ -3,7 +3,7 @@
 {% block title %} | Búsqueda {% endblock %}
 {% block content%}
 <div class="container container-custom">
-{% include 'partials/_filter.html' %}
+    <h1 class="title">Resultados para: {{ request.GET.q }}</h1>
     {% if products %}
     <div class="row">
         {% for product in products %}
