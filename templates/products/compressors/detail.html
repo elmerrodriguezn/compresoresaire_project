@@ -35,15 +35,15 @@
 
             <div class="card">
                 <div class="card-body">
-                    <a href="{% url 'index' %}" class="btn-link"><i class="fas fa-chevron-left"></i> Regresar a
-                        la
-                        lista de productos</a>
+                    <a href="{% url 'index' %}" class="btn-link"><i class="fas fa-chevron-left"></i>
+                        Regresar a la lista de productos
+                    </a>
                     <h3 class="title">{{ product.name }}</h3>
                     <p class="price">{{ product.list_price|intcomma }}</p>
                     {% if product.qty_available|floatformat >= "1" %}
                         <p>Stock disponible</p>
                     {% else %}
-                        Sin Stock
+                        <p></p>
                     {% endif %}
                     {% if product.description == False or product.description == '' %}
                         <p class="description">Somos una empresa distribuidora de <img

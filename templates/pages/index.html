@@ -5,26 +5,38 @@
 {% block title %} | Expertos en soluciones a la medida{% endblock %}
 
 {% block content %}
-<div class="container container-custom">
- {% regroup products|dictsort:"categ_id" by categ_id as category_list %}
- {% for categ_id in category_list %}
-     <h5 class="text-muted mt-4">
-         {% if categ_id.grouper.0 == 83  %}
-            {{ categ_id.grouper.1|slice:"35:" }}
-         {% else %}
-             {{ categ_id.grouper.1|slice:"43:" }}
-         {% endif %}
-         <small><a class="ml-4" href="{% url 'products.category' categ_id.grouper.0 %}">Ver más</a></small>
-     </h5>
-     <div class="row">
-     {% for product in categ_id.list %}
-         {% if forloop.counter  <= 4 %}
-         <div class="col-md-3">
-         {% include 'partials/_card.html' %}
-         </div>
-         {% endif %}
-     {% endfor %}
-     </div>
- {% endfor %}
-</div>
+    <div class="jumbotron main-cover">
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-md-8 p-4">
+                    <h1 style="font-weight: 200;">COMPRESORES DE AIRE Y REFACCIONES</h1>
+                     <hr class="my-2">
+            <p>ESTAMOS PARA ATENDERTE 24/7 CON VENTA, RENTA Y SERVICIOS DE COMPRESORES.</p>
+            <a class="btn btn-primary-custom btn-lg" href="https://wa.me/5216621100300" role="button">Whatsapp Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container container-custom">
+        {% regroup products|dictsort:"categ_id" by categ_id as category_list %}
+        {% for categ_id in category_list %}
+            <h5 class="text-muted mt-4">
+                {% if categ_id.grouper.0 == 83 %}
+                    {{ categ_id.grouper.1|slice:"35:" }}
+                {% else %}
+                    {{ categ_id.grouper.1|slice:"43:" }}
+                {% endif %}
+                <small><a class="ml-4" href="{% url 'products.category' categ_id.grouper.0 %}">Ver más</a></small>
+            </h5>
+            <div class="row">
+                {% for product in categ_id.list %}
+                    {% if forloop.counter  <= 4 %}
+                        <div class="col-md-3 car">
+                            {% include 'partials/_card.html' %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

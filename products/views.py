@@ -35,7 +35,7 @@ def index(request, category_id):
         return render(request, 'products/parts/index.html', context)
 
 
-def single(request, category_id, product_id):
+def detail(request, category_id, product_id):
     query = Query()
 
     data = query.get(
@@ -83,7 +83,7 @@ def search(request):
             ['type', '=', 'product'],
             ['categ_id.parent_id', 'in', [71, 79]],
             ['x_studio_field_tGMk6', '=', True],
-            ['name', 'ilike', q]
+            ['default_code', 'ilike', q]
         ],
         {
             'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
@@ -92,7 +92,7 @@ def search(request):
 
     context = {"products": data}
 
-    return render(request, 'products/search.html', context)
+    return render(request, 'products/search/index.html', context)
 
 
 def filter(request):
@@ -115,22 +115,25 @@ def filter(request):
         if cfm:
             value = ['x_studio_field_pYf9c', '=', cfm]
 
-    data = query.get(
-        'product.template',
-        'search_read',
-        [
-            ['type', '=', 'product'],
-            ['x_studio_field_tGMk6', '=', True],
-            ['categ_id.parent_id', 'in', [71, 79]],
-            value,
-        ],
-        {
-            'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
-            'limit': 20})
+    try:
+        data = query.get(
+            'product.template',
+            'search_read',
+            [
+                ['type', '=', 'product'],
+                ['x_studio_field_tGMk6', '=', True],
+                ['categ_id.parent_id', 'in', [71, 79]],
+                value,
+            ],
+            {
+                'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
+                'limit': 20})
+    except IndexError:
+        data = ''
 
     context = {"products": data}
 
-    return render(request, 'products/search.html', context)
+    return render(request, 'products/search/index.html', context)
 
 
 def lead(request):

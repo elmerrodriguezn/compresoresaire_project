@@ -1,7 +1,7 @@
 <div class="search">
     <form class="form-search" action="{% url 'search' %}" method="GET">
         <input type="text" name="q" class="form-control form-control-lg form-control-search"
-            placeholder="Busca el modelo del compresor" value="{{ request.GET.q }}" required>
+            placeholder="Buscar modelo del compresor" value="{{ request.GET.q }}" required>
         <button class="btn-search" type="submit"><i class="fas fa-search fa-lg"></i></button>
     </form>
 </div>
