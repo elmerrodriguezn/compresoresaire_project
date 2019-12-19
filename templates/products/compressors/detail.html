@@ -17,7 +17,7 @@
                     <a href="{% url 'index' %}" class="btn-link"><i class="fas fa-chevron-left"></i>
                         Regresar a la lista de productos
                     </a>
-                    <h3 class="title">{{ product.name }}</h3>
+                    {% include 'products/partials/_title.html' %}
                     {% include 'products/partials/_price.html' %}
                     {% include 'products/partials/_stock.html' %}
                     {% include 'products/partials/_description.html' %}

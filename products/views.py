@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from api.query import Query
 from modules.recaptcha import recaptcha
+import xmlrpc.client
 
 
 def index(request, category_id):
@@ -98,7 +99,11 @@ def search(request):
 def filter(request):
     query = Query()
 
-    value = ''
+    value = None
+
+    data = ''
+
+    (hp, psig, cfm) = (request.GET['hp'], request.GET['psig'], request.GET['cfm'])
 
     if 'hp' in request.GET:
         hp = request.GET['hp']
@@ -128,8 +133,9 @@ def filter(request):
             {
                 'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
                 'limit': 20})
-    except IndexError:
-        data = ''
+    except Exception as ex:
+        if isinstance(ex, xmlrpc.client.Fault):
+            data = ''
 
     context = {"products": data}
 
