@@ -19,8 +19,8 @@ def index(request, category_id):
             ['categ_id', '=', int(category_id)]
         ],
         {
-            'fields':
-            ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date']
+            'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
+            'order': 'create_date'
         }
         )
 
@@ -32,7 +32,7 @@ def index(request, category_id):
 
     if data[0]['categ_id'][0] in [72, 73, 74]:
         return render(request, 'products/compressors/index.html', context)
-    if data[0]['categ_id'][0] == 83:
+    if data[0]['categ_id'][0] in [80, 83]:
         return render(request, 'products/parts/index.html', context)
 
 
@@ -68,7 +68,7 @@ def detail(request, category_id, product_id):
 
     if data[0]['categ_id'][0] in [72, 73, 74]:
         return render(request, 'products/compressors/detail.html', context)
-    if data[0]['categ_id'][0] == 83:
+    if data[0]['categ_id'][0] in [80, 83]:
         return render(request, 'products/parts/detail.html', context)
 
 
@@ -88,7 +88,7 @@ def search(request):
         ],
         {
             'fields': ['id', 'name', 'default_code', 'description_sale', 'description', 'categ_id', 'create_date'],
-            'limit': 20
+            'limit': 20,
         })
 
     context = {"products": data}

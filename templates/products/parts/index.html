@@ -10,7 +10,7 @@
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Página de inicio</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Refacciones
+                    {{ products.0.categ_id.1|slice:"35:" }}
                 </li>
             </ol>
         </nav>

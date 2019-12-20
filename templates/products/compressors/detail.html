@@ -2,7 +2,7 @@
 {% block title %} | {{ product.name }} {% endblock %}
 {% load static %}
 {% block content %}
-
+    {% include 'products/partials/_structure_data.html' %}
     <div class="container container-custom">
         {% include 'products/partials/_breadcrumb_level3.html' %}
         <div class="card-group">

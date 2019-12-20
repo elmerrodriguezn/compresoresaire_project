@@ -13,7 +13,7 @@ def index(request):
         'search_read', [
             ['type', '=', 'product'],
             ['x_studio_field_tGMk6', '=', True],
-            ['categ_id.parent_id', 'in', [71, 79]],
+            ['categ_id', 'in', [72, 73, 74, 80, 83]],
         ],
         {
             'fields': ['name', 'default_code', 'description_sale', 'description', 'create_date', 'categ_id', 'categ_id.name'],

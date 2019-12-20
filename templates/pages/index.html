@@ -21,7 +21,7 @@
         {% regroup products|dictsort:"categ_id" by categ_id as category_list %}
         {% for categ_id in category_list %}
             <h5 class="text-muted mt-4">
-                {% if categ_id.grouper.0 == 83 %}
+                {% if categ_id.grouper.0 == 80 or categ_id.grouper.0 == 83 %}
                     {{ categ_id.grouper.1|slice:"35:" }}
                 {% else %}
                     {{ categ_id.grouper.1|slice:"43:" }}

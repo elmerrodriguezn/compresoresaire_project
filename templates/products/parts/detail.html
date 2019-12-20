@@ -2,6 +2,7 @@
 {% block title %} | {{ product.name }} {% endblock %}
 {% load static %}
 {% block content %}
+    {% include 'products/partials/_structure_data.html' %}
     <div class="container container-custom">
         {% include 'products/partials/_breadcrumb_level3.html' %}
         <div class="card-group">
@@ -28,8 +29,10 @@
         <div class="card-group">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-dark mb-4"><strong>Descripción</strong></h5>
-                    <p>{{ product.description_sale|linebreaksbr }}</p>
+                    {% if product.description_sale %}
+                        <h5 class="text-dark mb-4"><strong>Descripción</strong></h5>
+                        <p>{{ product.description_sale|linebreaksbr }}</p>
+                    {% endif %}
                     <h5 class="text-dark mb-4"><strong>Número de parte</strong></h5>
                     <p>{{ product.default_code }}</p>
                 </div>
