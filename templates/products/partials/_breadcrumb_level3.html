@@ -3,7 +3,7 @@
         <li class="breadcrumb-item"><a href="{% url 'index' %}">Página de inicio</a></li>
         <li class="breadcrumb-item">
             <a href="{% url 'products.category' product.categ_id.0 %}">
-            {% if product.categ_id.0 == 83 %}
+            {% if product.categ_id.0 == 80 or product.categ_id.0 == 83 %}
                 {{ product.categ_id.1|slice:"35:" }}
             {% else %}
                 {{ product.categ_id.1|slice:"43:" }}
