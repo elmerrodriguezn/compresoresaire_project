@@ -1,3 +1,4 @@
+{% load humanize %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -6,6 +7,15 @@
   "image": [
     "https://lymservicios.odoo.com/web/image?model=product.template&id={{ product.id }}&field=image"
   ],
-  "description": "{{ product.description }}"
+  "brand": {
+    "name": "{{ product.x_studio_field_04Kkp.1 }}"
+  },
+  "description": "{{ product.description }}",
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "{{ product.list_price|intcomma }}",
+    "highPrice": "{{ product.list_price|intcomma }}",
+    "priceCurrency": "MXN"
+  }
 }
 </script>
