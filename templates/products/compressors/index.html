@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} | Expertos en soluciones a la medida {% endblock %}
+{% block title %} | {{ products.0.categ_id.1|slice:"44:"|capfirst }} {% endblock %}
 
 {% block content %}
     <div class="container container-custom">
@@ -14,6 +14,7 @@
                 </li>
             </ol>
         </nav>
+        <h1 class="page-title">{{ products.0.categ_id.1|slice:"44:" }}</h1>
         {% include 'products/partials/_filter.html' %}
         <div class="row">
             {% for product in products %}

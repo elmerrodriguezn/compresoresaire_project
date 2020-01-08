@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} | {{ product.name }} {% endblock %}
+{% block title %} | {{ product.name|title }} {% endblock %}
 {% load static %}
 {% block content %}
     {% include 'products/partials/_structure_data.html' %}
