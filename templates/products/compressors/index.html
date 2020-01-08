@@ -10,11 +10,11 @@
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="{% url 'index' %}">Página de inicio</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ products.0.categ_id.1|slice:"44:" }}
+                    {{ products.0.categ_id.1|slice:"44:"|title }}
                 </li>
             </ol>
         </nav>
-        <h1 class="page-title">{{ products.0.categ_id.1|slice:"44:" }}</h1>
+        <h1 class="page-title">{{ products.0.categ_id.1|slice:"44:"|title }}</h1>
         {% include 'products/partials/_filter.html' %}
         <div class="row">
             {% for product in products %}
