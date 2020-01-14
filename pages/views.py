@@ -42,6 +42,7 @@ def send_lead(request):
             'create',
             {
                 'name': 'compresoresaire.com',
+                'user_id': 14,
                 'contact_name': full_name,
                 'email_from': email,
                 'phone': phone,
